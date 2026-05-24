@@ -1,99 +1,83 @@
-# Web Merchant Integration System & Auto Batch Processing
+# 💳 Web Merchant Integration System 2.0
 
-## Note on Source Code Availability
-This project is a proprietary enterprise application developed for a fintech organization. Due to confidentiality and intellectual property restrictions, the source code cannot be made public. This repository is intended to present the system design, architecture, and business impact.
+![C#](https://img.shields.io/badge/Language-C%23-blue.svg)
+![Framework](https://img.shields.io/badge/Framework-.NET%208-purple.svg)
+![Database](https://img.shields.io/badge/Database-SQL%20Server%20%2F%20AS400-cyan.svg)
+![Architecture](https://img.shields.io/badge/Architecture-Clean%20Architecture-green.svg)
 
----
-
-## Overview
-This project involved the complete migration and redesign of a legacy fintech system previously built on .NET 4.6.
-
-The original system was unstable, difficult to maintain, and lacked flexibility for banking operations. I redesigned and rebuilt the platform from scratch using .NET 8, introducing a modern architecture, improved performance, and enhanced configurability.
-
-The system is currently deployed in production and used by multiple banking partners for daily operational workflows.
+## 🔒 Source Code Availability
+> [!IMPORTANT]
+> **Proprietary Software Notice**  
+> This project is a proprietary enterprise application developed for a financial organization. Due to strict confidentiality and intellectual property restrictions, the source code cannot be made public. This repository serves as a portfolio showcase outlining the system design, migration architecture, features, and business impact.
 
 ---
 
-## Impact
+## 📋 Project Overview
 
-- Replaced a legacy system with a stable and scalable .NET 8 architecture  
-- Eliminated recurring production issues and improved system reliability  
-- Reduced operational workload through improved UI and faster processing  
-- Enabled dynamic configurations that were not possible in the previous system  
-- Implemented compliance-focused workflows required for banking systems  
+This project represents the complete migration and redesign of a legacy fintech merchant processing system. The original system (built on .NET 4.6) was unstable, difficult to maintain, and lacked the flexible configurations required for banking operations. 
+
+I redesigned and rebuilt the platform from scratch using **.NET 8** and **Clean Architecture** principles. The system is deployed in production and manages daily operational settlement workflows for multiple banking partners.
 
 ---
 
-## Core Features
+## 🔒 Maker-Checker (Four-Eyes Principle) Flow
 
-### Maker-Checker Workflow
-- Multi-level approval system (four-eyes principle)  
-- Actions must be authorized before execution  
+All critical actions (like managing batch services or modifying merchant accounts) must go through a secure multi-level approval workflow:
 
-### Role-Based Access Control
-- Dynamic user creation and management  
-- Granular permission handling  
-- Hierarchical role structure  
-
-### Entity Management
-- Full lifecycle management for:
-  - Auto Batch Services  
-  - Merchants and participants  
-
-### Audit Logging
-- Complete tracking of system activity  
-- Includes user actions, timestamps, and status  
-- Export support (CSV/TXT) for compliance  
-
-### Data Validation & Integration
-- Real-time validation against AS400 DB2  
-- Fail-safe mechanisms for critical operations  
+```mermaid
+graph LR
+    Maker[1. Maker: Request Action] -->|Create Pending Record| Queue[Audit & Pending Queue]
+    Queue -->|Notification| Checker[2. Checker: Review Request]
+    Checker -->|Approve| Execute[3. Execute Action & Log]
+    Checker -->|Reject| Reject[4. Reject & Log Reason]
+```
 
 ---
 
-## Architecture
+## 🚀 Key Business Impact
 
-The system follows a clean, layered architecture:
-
-- Core / Domain Layer  
-- Infrastructure Layer  
-- Web Layer (UI)  
-
-Designed for scalability, maintainability, and separation of concerns.
+- **Architecture Migration**: Transitioned from a legacy monolithic structure to a highly modular .NET 8 codebase.
+- **Improved Reliability**: Eliminated recurring production freezes during auto batch executions.
+- **Operational Safety**: Implemented the maker-checker mechanism, reducing operator errors.
+- **Enhanced Configuration**: Enabled support for merchant-specific settlement schedules and transaction validations without requiring code changes.
+- **Compliance Alignment**: Integrated comprehensive system audits to meet strict banking audit requirements.
 
 ---
 
-## Tech Stack
+## ⚙️ Core Features & System Architecture
 
-Backend:
-- C# / .NET 8  
-- ASP.NET Core (MVC / Razor Pages)  
+### 1. Multi-Level Maker-Checker Workflow
+- Any configuration change or batch trigger initiated by a "Maker" must be approved by a "Checker" before execution.
+- Prevents unauthorized edits and logs both parties for compliance tracking.
 
-Database:
-- Microsoft SQL Server  
-- IBM DB2 (AS400)  
+### 2. Auto Batch Services Management
+- Admin panels to control, schedule, and trigger auto batch services that interface with clearing house servers.
+- Dynamic starting, stopping, and parameter tuning for background batch processes.
 
-Data Access:
-- Stored Procedures  
-- Repository Pattern  
+### 3. Real-Time AS400 DB2 Integration
+- Transactions and merchant configurations are validated in real time against legacy IBM DB2 database hosts.
+- Employs fail-safe fallback methods to handle connectivity drops gracefully.
 
----
+### 4. Granular Role-Based Access Control (RBAC)
+- Hierarchical permission trees allowing operators access only to their specific business domains.
 
-## Responsibilities
-
-- Led full system redesign and migration from .NET 4.6 to .NET 8  
-- Designed application architecture and data flow  
-- Implemented backend services and business logic  
-- Built user interface and management modules  
-- Integrated legacy AS400 DB2 systems with modern architecture  
-- Developed security, validation, and audit mechanisms  
+### 5. Detailed Compliance Logging & Exporting
+- Records every action, payload change, timestamp, and operator IP.
+- Features formatted report export (CSV/TXT) for easy compliance auditing.
 
 ---
 
-## Summary
-This project demonstrates experience in modernizing legacy enterprise systems, designing scalable architectures, and building secure, production-grade fintech applications.
+## 🛠️ System Architecture Stack
+
+| Layer | Technologies Used | Design Pattern / Focus |
+| :--- | :--- | :--- |
+| **Presentation (Web)** | ASP.NET Core MVC, Razor Pages, Bootstrap | Clean dashboard UI, state-driven widgets |
+| **Core (Domain)** | C# (.NET 8), Entity Models | Business validation, Interface definitions |
+| **Infrastructure** | Entity Framework Core, ADO.NET | Repository Pattern, legacy DB2 connectors |
+| **Databases** | MS SQL Server, IBM DB2 (AS400) | Stored procedures, high-throughput indexes |
 
 ---
 
-## Disclaimer
-This repository is intended for demonstration purposes only. No proprietary source code is included.
+## 📄 License
+
+This documentation and portfolio showcase outline are licensed under the MIT License - see the [LICENSE](file:///c:/Users/Sarim/Desktop/Project%20Development/Web-Merchant-Integration-System-2.0/LICENSE) file for details.
