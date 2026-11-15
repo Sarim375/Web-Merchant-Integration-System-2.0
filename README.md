@@ -99,7 +99,7 @@ sequenceDiagram
 - **Modernization without a data migration.** Reused the existing database schema and core host programs, so the new app could run alongside the old one and switch over with no data conversion.
 - **Exact compatibility with the core host.** Reproduced the legacy field formats, numeric conversions and date layouts precisely, verified against real records.
 - **Right tool per job in data access.** EF Core for simple mapped data; hand-written ADO.NET with explicit transactions where ordering and database triggers matter.
-- **Intranet performance fixes.** Removed external font and CDN dependencies that caused 20 to 30 second page-load stalls on machines without internet access, and moved one-time data seeding out of application start-up.
+- **Intranet performance fixes.** Removed external font and CDN dependencies that caused page-load stalls of tens of seconds on machines without internet access, and moved one-time data seeding out of application start-up.
 - **Production hardening.** Fixed browser cookie behaviour behind a reverse proxy with SSL termination, and added security headers and structured logging.
 
 ## Skills Demonstrated
