@@ -50,6 +50,7 @@ This portal is the web front end that operations staff and supervisors use every
 |---|---|
 | Runtime | .NET 10, C# (migrated from .NET Framework 4.6) |
 | Web | ASP.NET Core Razor Pages, view components, page filters |
+| APIs | REST APIs (JSON) |
 | Data access | Entity Framework Core for reference data; ADO.NET with explicit transactions for workflow operations |
 | Core host | IBM i (AS/400) DB2 via ODBC and host stored procedures |
 | Database | Microsoft SQL Server |
@@ -104,7 +105,7 @@ sequenceDiagram
 
 ## Skills Demonstrated
 
-`C#` · `.NET 10` · `ASP.NET Core Razor Pages` · `Migration from .NET Framework` · `Clean architecture` · `Entity Framework Core` · `ADO.NET` · `SQL Server` · `IBM i / AS/400 DB2` · `ODBC` · `Maker-checker workflows` · `Role-based access control` · `Audit and compliance` · `IIS deployment` · `Merchant acquiring domain`
+`C#` · `.NET 10` · `ASP.NET Core Razor Pages` · `Migration from .NET Framework` · `Clean architecture` · `Entity Framework Core` · `ADO.NET` · `REST APIs` · `SQL Server` · `IBM i / AS/400 DB2` · `ODBC` · `Maker-checker workflows` · `Role-based access control` · `Audit and compliance` · `IIS deployment` · `Merchant acquiring domain`
 
 ---
 
